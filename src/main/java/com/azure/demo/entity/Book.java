@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
@@ -14,10 +16,13 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 public class Book {
 	
 	@Id
+	@NotNull(message = "Id is mandatory")
 	private Integer bookId;
 	
+//	@NotBlank(message = "Book name is mandatory")
 	private String bookName;
 	
+//	@NotBlank(message = "Author is mandatory")
 	private String bookAuthor;
 	
 	@OneToOne

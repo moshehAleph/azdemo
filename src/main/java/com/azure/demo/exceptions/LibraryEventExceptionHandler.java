@@ -1,7 +1,11 @@
 package com.azure.demo.exceptions;
 
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
+
+import javax.validation.ConstraintViolation;
+import javax.validation.ConstraintViolationException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,10 +20,9 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 
 @ControllerAdvice
-
-public class LibraryEventProducerExceptionHandler {
+public class LibraryEventExceptionHandler {
 	
-	private Logger LOGGER = LoggerFactory.getLogger(LibraryEventProducerExceptionHandler.class);
+	private Logger LOGGER = LoggerFactory.getLogger(LibraryEventExceptionHandler.class);
 	
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	public ResponseEntity<?> handleRequestBody(MethodArgumentNotValidException ex) {
@@ -34,5 +37,7 @@ public class LibraryEventProducerExceptionHandler {
 		return new ResponseEntity<>(errorMessage,HttpStatus.BAD_REQUEST);
 		
 	}
+	
+
 
 }
